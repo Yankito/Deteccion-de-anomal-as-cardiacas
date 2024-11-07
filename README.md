@@ -33,7 +33,7 @@ Al evaluar el modelo este entrega una precisión del 85,7%, esto debido a que el
 
 Debido a que en la BD de Atletas Noruegos además contiene un diagnóstico del algortimo Marquette SL12, cuando el modelo predice un ECG como de riesgo y el cardiólgo no lo comtempló de esta manera, se evalúa el disgnóstico del algortimo SL12. 
 
-Al contemplar este diagnóstico adicional, se obtiene una precisión del 89,3%, en donde en este caso existen tres diagnósticos normales que se detectaron como de riesgo.
+Al contemplar este diagnóstico adicional, se obtiene una precisión del 96,4%, en donde en este caso existen un diagnósticos normales que se detectaron como de riesgo. El cual corresponde a una hipertrofia ventricular izquierda, anomalía que se presenta con frecuencia en deportistas debido al desarrollo de corazón de atleta
 
 
 
