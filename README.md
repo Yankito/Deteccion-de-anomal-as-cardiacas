@@ -7,7 +7,7 @@ Para solucionar este problema se plantea un modelo que busca predecir el diagnó
 
 
 ## Descripción de los datos
-Se tiene una base de datos de ECG de 12 derivaciones de 28 atletas de alto rendimiento de Noruega. Debido a la baja cantidad de datos se optó por expandir la cantidad de datos, para esto se usó “Lobachevsky University Electrocardiography Database”. Esta base de datos contiene 200 ECG de 12 derivaciones de personas que no son necesariamente deportistas, para utilizar estos datos en un contexto de detectar anomalías en deportistas, solo se considera los datos de los pacientes hasta 45 años, por lo que finalmente se tienen 69 pacientes de la nueva base de datos.
+Se tiene la base de datos "Norwegian Endurance Athlete ECG Database"<sup>1</sup> que contiene 28 ECG de 12 derivaciones de atletas de alto rendimiento de Noruega. Debido a la baja cantidad de datos se optó por expandir la cantidad de datos, para esto se usó “Lobachevsky University Electrocardiography Database”<sup>2</sup>.. Esta base de datos contiene 200 ECG de 12 derivaciones de personas que no son necesariamente deportistas, para utilizar estos datos en un contexto de detectar anomalías en deportistas, solo se considera los datos de los pacientes hasta 45 años, por lo que finalmente se tienen 69 pacientes de la nueva base de datos.
 
 Las bases de datos tienen diferencias entre el formato de presentación del diagnóstico, pero en ambos casos **el diagnóstico es realizado por cardiólogos**, en el caso de la BD de Atletas Noruegos el cardiólogo es especializado en medicina deportiva, además, se tiene adicionalmente un diagnóstico del algoritmo Marquette SL12. En la BD de deportistas, las etiquetas se presentan en un listado, donde primero se indica el tipo de ritmo, posterior a esto se agregan si es que existen anomalías cardíacas, y finalmente se indica el diagnóstico general del ECG, si es normal, limítrofe o anormal. En el caso de la BD de Lobachevsky University, se indica el tipo de ritmo cardiaco, el eje eléctrico del corazón y se agregan si es que existen anomalías, en este caso no indica el diagnóstico general del ECG.
 
@@ -27,7 +27,7 @@ Para normalizar y estandarizar los datos de ambos ECG se hizo se normaliza los d
 
 ### Generación de diagnósticos de la nueva base de datos
 
-Debido a que falta el diagnóstico general de cada ECG de la BD de Lobachevsky University, se evaluaron las etiquetas de los hallazgos en base al “Consenso Internacional de los Criterios para la Interpretación del ECG en Atletas”. Estos criterios buscan disminuir los falsos positivos mejorando la detección de anomalías que pueden derivar en una muerte cardiaca súbita.
+Debido a que falta el diagnóstico general de cada ECG de la BD de Lobachevsky University, se evaluaron las etiquetas de los hallazgos en base al “Consenso Internacional de los Criterios para la Interpretación del ECG en Atletas”<sup>3</sup>. Estos criterios buscan disminuir los falsos positivos mejorando la detección de anomalías que pueden derivar en una muerte cardiaca súbita.
 Los hallazgos se clasifican según el riesgo que presenta una de estas anomalías hacia los deportistas. 
 Para los datos de Lobachevsky University, se tomó en cuenta las etiquetas presentes, en donde se clasificó como de riesgo una desviación del eje eléctrico del corazón, crecimiento en el auricular derecho o izquierdo y un bloqueo completo de la rama derecha o algún tipo de isquemia.
 
@@ -104,3 +104,16 @@ EL F1 tiene un 50% considerando las etiquetas de los cardiólogos y un 90,91% co
 ![Gráfico 7: Métricas de la evaluación](./graficos/metricas.png)
 
 
+## Conclusiones
+
+Al realizar el entrenamiento del modelo KNN con DTW con la BD Lobachevsky University y las pruebas con la BD de Atletas Noruegos se obtuvieron resultados, el aspecto a destacar es que se predijeron todos los casos de riesgos. Esto es un aspecto importante, ya que es crucial no descartar ninguno de estos casos. Sin embargo, se generaron algunos falsos positivos, pero esto no es un total error, ya que como se demostró anteriormente la diferencia al usar del diagnóstico del algoritmo SL12, es posible que estos casos también necesitaban la evaluación de un cardiólogo para descartar los riesgos. 
+
+Un aspecto negativo es el tiempo para diagnósticar un ECG, ya que aproximadamente se tiene un tiempo de ejecución para cada ECG de un minuto. Y al tener muchos datos que predecir el algoritmo, puede tardar en responder todo el conjunto
+
+## Referencias
+
+1. Singstad, B. (2022). Norwegian Endurance Athlete ECG Database (version 1.0.0). PhysioNet. https://doi.org/10.13026/qpjf-gk87.
+
+2. 	Kalyakulina, A., Yusipov, I., Moskalenko, V., Nikolskiy, A., Kosonogov, K., Zolotykh, N., & Ivanchenko, M. (2021). Lobachevsky University Electrocardiography Database (version 1.0.1). PhysioNet. https://doi.org/10.13026/eegm-h675.
+
+3. Drezner JA, Sharma S, Baggish A, et al. International criteria for electrocardiographic interpretation in athletes: Consensus statement. Br J Sports Med. 2017;51:704-731 
