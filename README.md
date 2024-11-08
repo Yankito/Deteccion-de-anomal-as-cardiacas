@@ -3,13 +3,13 @@
 ## Descripción del problema
 Los deportistas de alto rendimiento generan adaptaciones en el corazón, derivando en un corazón de atleta. Estas adaptaciones pueden ser factores de riesgo para personas no deportistas, por lo que es importante detectar estas anomalías y evaluar si corresponde a un riesgo para el deportista. Debido a que un mal diagnóstico puede derivar en una muerte cardíca súbita.
 
-Para solucionar este problema se plantea un modelo que busca predecir el diagnóstico general de un ECG de un deportista, se espera que **el modelo clasifique si tiene un ECG normal o de riesgo.**. Para así alerta un posible riesgo.
+Para solucionar este problema se plantea un modelo que busca predecir el diagnóstico general de un ECG de un deportista, se espera que **el modelo clasifique si se tiene un ECG normal o de riesgo**. Para así, alertar un posible riesgo y requerir la interpretación de un cardiólogo.
 
 
 ## Descripción de los datos
 Se tiene la base de datos "Norwegian Endurance Athlete ECG Database"<sup>1</sup> que contiene 28 ECG de 12 derivaciones de atletas de alto rendimiento de Noruega. Debido a la baja cantidad de datos se optó por expandir la cantidad de datos, para esto se usó “Lobachevsky University Electrocardiography Database”<sup>2</sup>.. Esta base de datos contiene 200 ECG de 12 derivaciones de personas que no son necesariamente deportistas, para utilizar estos datos en un contexto de detectar anomalías en deportistas, solo se considera los datos de los pacientes hasta 45 años, por lo que finalmente se tienen 69 pacientes de la nueva base de datos.
 
-Las bases de datos tienen diferencias entre el formato de presentación del diagnóstico, pero en ambos casos **el diagnóstico es realizado por cardiólogos**, en el caso de la BD de Atletas Noruegos el cardiólogo es especializado en medicina deportiva, además, se tiene adicionalmente un diagnóstico del algoritmo Marquette SL12. En la BD de deportistas, las etiquetas se presentan en un listado, donde primero se indica el tipo de ritmo, posterior a esto se agregan si es que existen anomalías cardíacas, y finalmente se indica el diagnóstico general del ECG, si es normal, limítrofe o anormal. En el caso de la BD de Lobachevsky University, se indica el tipo de ritmo cardiaco, el eje eléctrico del corazón y se agregan si es que existen anomalías, en este caso no indica el diagnóstico general del ECG.
+Las bases de datos tienen diferencias entre el formato de presentación del diagnóstico, pero en ambos casos **el diagnóstico es realizado por cardiólogos**, en el caso de la BD de Atletas Noruegos el cardiólogo es especializado en medicina deportiva, además, se tiene adicionalmente un diagnóstico del algoritmo Marquette SL12. En la BD de deportistas, las etiquetas se presentan en un listado, donde primero se indica el tipo de ritmo, posterior a esto se agregan si es que existen anomalías cardíacas, y finalmente se indica el diagnóstico general del ECG, si es normal, limítrofe o anormal. En el caso de la BD de Lobachevsky University, se indica el tipo de ritmo cardíaco, el eje eléctrico del corazón y se agregan si es que existen anomalías, en este caso no indica el diagnóstico general del ECG.
 
 Para normalizar y estandarizar los datos de ambos ECG se hizo se normaliza los datos de los ECG ajustando los valores a un rango de 0 a 1 y luego ajusta la frecuencia de muestreo del ECG a 500 Hz. Si la frecuencia de muestreo original no es 500 Hz, realiza una interpolación para cambiar la frecuencia.
 
@@ -27,7 +27,7 @@ Para normalizar y estandarizar los datos de ambos ECG se hizo se normaliza los d
 
 ### Generación de diagnósticos de la nueva base de datos
 
-Debido a que falta el diagnóstico general de cada ECG de la BD de Lobachevsky University, se evaluaron las etiquetas de los hallazgos en base al “Consenso Internacional de los Criterios para la Interpretación del ECG en Atletas”<sup>3</sup>. Estos criterios buscan disminuir los falsos positivos mejorando la detección de anomalías que pueden derivar en una muerte cardiaca súbita.
+Debido a que falta el diagnóstico general de cada ECG de la BD de Lobachevsky University, se evaluaron las etiquetas de los hallazgos en base al “Consenso Internacional de los Criterios para la Interpretación del ECG en Atletas”<sup>3</sup>. Estos criterios buscan disminuir los falsos positivos mejorando la detección de anomalías que pueden derivar en una muerte cardíaca súbita.
 Los hallazgos se clasifican según el riesgo que presenta una de estas anomalías hacia los deportistas. 
 Para los datos de Lobachevsky University, se tomó en cuenta las etiquetas presentes, en donde se clasificó como de riesgo una desviación del eje eléctrico del corazón, crecimiento en el auricular derecho o izquierdo y un bloqueo completo de la rama derecha o algún tipo de isquemia.
 
@@ -105,20 +105,20 @@ EL F1 tiene un 50% considerando las etiquetas de los cardiólogos y un 90,91% co
 
 ### Comparación de gráfico PCA con predicciones realizadas
 
-## Gráfico de etiquetas de cardíologos
+## Gráfico de etiquetas de cardiólogos
 
 ![Gráfico 8: Gráfico PCA](./graficos/graficoPCA.png)
 
-## Gráfico de etiquetas de predecidas por el modelo
+## Gráfico de etiquetas de predichas por el modelo
 
 ![Gráfico 9: Gráfico PCA Predicho](./graficos/graficoPCAPredicho.png)
 
 
-## Gráfico de etiquetas de cardíologos
+## Gráfico de etiquetas de cardiólogos
 
 ![Gráfico 9: Gráfico PCA Predicho](./graficos/graficoPCAPredichoComparacion.png)
 
-Se puede observar que los ECG de los bordes fueron detectados como de riesgo, ya que se acercan a ECGs que están clasificados como de riesgo. Sin embargo, según el cardíologo, este corresponde a un ECG normal, lo que nos indica un falso positivo.
+Se puede observar que los ECG de los bordes fueron detectados como de riesgo, ya que se acercan a ECGs que están clasificados como de riesgo. Sin embargo, según el cardiólogo, este corresponde a un ECG normal, lo que nos indica un falso positivo.
 
 Al evaluar estos falsos positivos con las etiquetas de SL12, los clasificamos como, un FP con riesgo en etiqueta SL12 y un FP normal en SL12. 
 
