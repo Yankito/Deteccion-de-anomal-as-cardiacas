@@ -1,4 +1,5 @@
 # Detección de riesgos cardíacos en deportistas
+### Autor: Yanko Acuña Villaseca
 
 ## Descripción del problema
 Los deportistas de alto rendimiento generan adaptaciones en el corazón, derivando en un corazón de atleta. Estas adaptaciones pueden ser factores de riesgo para personas no deportistas, por lo que es importante detectar estas anomalías y evaluar si corresponde a un riesgo para el deportista. Debido a que un mal diagnóstico puede derivar en una muerte cardíca súbita.
@@ -62,9 +63,9 @@ Se presentan los diagnósticos generales de los ECG de ambas bases de datos.
 
 ### Gráfico PCA para visualizar ECG normales y de riesgo
 
-Aunque no se puede diagnosticar  si un ECG es de riesgo mediante este gráfico, si se logra visualizar un sesgo entre la posición de los ECG y la clasificación, debido que hacia los bordes los casos se clasifican como de riesgo. Por lo que si existe una distancia que puede determinar si el ECG es de riesgo.
+Aunque no se puede diagnosticar si un ECG es de riesgo mediante este gráfico, si se logra visualizar un sesgo entre la posición de los ECG y la clasificación, debido que hacia los bordes se encuentran los casos que se clasifican como de riesgo, y existe una zona en donde se agrupa la mayor cantidad de casos normales. Debido a que existe una diferencia de distancia entre el grupo de ECGs normales y los casos de bordes, se podría calcular la distancia de un ECG frente a los datos de entrenamiento y buscar los casos mas cercanos, para así detectar los casos de riesgo.
 
-![Gráfico 7: Gráfico PCA](./graficos/graficoPCA.png)
+![Gráfico 5: Gráfico PCA](./graficos/graficoPCA.png)
 
 
 
@@ -85,7 +86,7 @@ Al evaluar el modelo este entrega una exactitud del 85,71%, esto debido a que el
 
 #### Matriz de Confusión de Diagnósticos de ECGs de Atletas
 
-![Gráfico 5: Matriz de Confusión Atletas](./graficos/matrizConfusionAtletas.png)
+![Gráfico 6: Matriz de Confusión Atletas](./graficos/matrizConfusionAtletas.png)
 
 
 Debido a que en este caso se generan ciertos falsos positivos, se presenta la opción de no clasificar este diagnóstico como un completo error, sino, que este caso posiblemente si necesite la evaluación de un cardiólogo de igual manera. Debido a que se posee las etiquetas del algoritmo SL12, se tiene la posibilidad de usar este diagnóstico para comprobar la predicción, cuando el modelo predice un ECG como de riesgo y el cardiólogo no lo contempló de esta manera, se evalúa el diagnóstico del algoritmo SL12. 
@@ -94,41 +95,40 @@ Al contemplar este diagnóstico adicional, se obtiene una exactitud del 96,4%, D
 
 #### Matriz de Confusión de Diagnósticos de ECGs de Atletas usando etiqueta de SL12
 
-![Gráfico 6: Matriz de Confusión Atletas con SL12](./graficos/matrizConfusionAtletasSL12.png)
+![Gráfico 7: Matriz de Confusión Atletas con SL12](./graficos/matrizConfusionAtletasSL12.png)
 
 El recall es de 100% ya que se detectaron todos los casos de riesgo correctamente, lo que es primordial para el modelo. Adicionalmente, se tiene un 33,33% de precisión, ya que se generaron algunos falsos positivos, sin embargo, este porcentaje aumenta a 83.33% si se consideran los diagnósticos del SL12. 
 EL F1 tiene un 50% considerando las etiquetas de los cardiólogos y un 90,91% considerando adicionalmente la etiqueta del SL12.
 
 #### Métricas de la evaluación
 
-![Gráfico 7: Métricas de la evaluación](./graficos/metricas.png)
+![Gráfico 8: Métricas de la evaluación](./graficos/metricas.png)
 
 ### Comparación de gráfico PCA con predicciones realizadas
 
 ## Gráfico de etiquetas de cardiólogos
 
-![Gráfico 8: Gráfico PCA](./graficos/graficoPCA.png)
+![Gráfico 9: Gráfico PCA](./graficos/graficoPCA.png)
 
 ## Gráfico de etiquetas de predichas por el modelo
 
-![Gráfico 9: Gráfico PCA Predicho](./graficos/graficoPCAPredicho.png)
+![Gráfico 10: Gráfico PCA Predicho](./graficos/graficoPCAPredicho.png)
 
 
 ## Gráfico de comparación de Falsos Positivos
 
-![Gráfico 9: Gráfico PCA Predicho](./graficos/graficoPCAPredichoComparacion.png)
+![Gráfico 11: Gráfico PCA Predicho](./graficos/graficoPCAPredichoComparacion.png)
 
-Se puede observar que los ECG de los bordes fueron detectados como de riesgo, ya que se acercan a ECGs que están clasificados como de riesgo. Sin embargo, según el cardiólogo, este corresponde a un ECG normal, lo que nos indica un falso positivo.
+De los gráficos se puede analizar que los ECG detectados como de riesgo se encuentran hacia los bordes del gráfico, separados de los casos normales, estos casos se acercan más a ECGs que están clasificados como de riesgo. Sin embargo, según el cardiólogo, este corresponde a un ECG normal, lo que nos indica un posible falso positivo.
 
-Al evaluar estos falsos positivos con las etiquetas de SL12, los clasificamos como, un FP con riesgo en etiqueta SL12 y un FP normal en SL12. 
+Para evaluar la veracidad de estos falsos positivos, se comprobarán las etiquetas del algoritmo SL12. Para este caso se clasifican como, un FP con riesgo en etiqueta SL12 y un FP normal en SL12. 
 
-Se tiene que los FP que tienen riesgo en la etiqueta SL12, se ubican en los bordes del gráfico. Ya que se encuentran distanciados de la zona de los ECG normales. El caso que se consideró de riesgo y este si era normal en la etiqueta del SL12 se encuentra cercano a los ECGs normales.
+Se tiene que los FP que tienen riesgo en la etiqueta SL12, se ubican en los bordes del gráfico, ya que estos se encuentran distanciados de la zona en donde se agrupa la gran mayoría de los ECG normales. Esto indica que estos casos de falsos positivos si presentan una diferencia frente a los casos normales, por lo que detectar estos casos es un acierto, ya que posiblemente se necesite la evaluación de un cardiólogo para descartar un caso de riesgo.
+El caso que se consideró de riesgo y si era normal en la etiqueta del SL12 se encuentra cercano a los ECGs normales, por lo que se tiene realmente un falso positivo.
 
 ## Conclusiones
 
-Al realizar el entrenamiento del modelo KNN con DTW con la BD Lobachevsky University y las pruebas con la BD de Atletas Noruegos se obtuvieron resultados, el aspecto a destacar es que se predijeron todos los casos de riesgos. Esto es un aspecto importante, ya que es crucial no descartar ninguno de estos casos. Sin embargo, se generaron algunos falsos positivos, pero esto no es un total error, ya que como se demostró anteriormente la diferencia al usar del diagnóstico del algoritmo SL12, es posible que estos casos también necesitaban la evaluación de un cardiólogo para descartar los riesgos. 
-
-Un aspecto negativo es el tiempo para diagnósticar un ECG, ya que aproximadamente se tiene un tiempo de ejecución para cada ECG de un minuto. Y al tener muchos datos que predecir el algoritmo, puede tardar en responder todo el conjunto
+Al realizar el entrenamiento del modelo KNN con DTW con la BD Lobachevsky University y las pruebas con la BD de Atletas Noruegos se obtuvieron resultados adecuados, el aspecto a destacar es que se detectaron satisfactoriamente todos los casos de riesgos. Esto es un aspecto importante, ya que es crucial no descartar ninguno de estos casos. Sin embargo, se generaron algunos falsos positivos, pero esto no es un total error, ya que como se demostró anteriormente, al contemplar el diagnóstico del algoritmo SL12, es posible que estos casos también necesitaban la evaluación de un cardiólogo para descartar los riesgos. Se logró comprobar e identificar que existe un sesgo cuando se tiene casos de riesgo, ya que estos se alejan de la zona donde se agrupan los casos normales.
 
 ## Referencias
 
