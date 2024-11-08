@@ -114,13 +114,15 @@ EL F1 tiene un 50% considerando las etiquetas de los cardiólogos y un 90,91% co
 ![Gráfico 9: Gráfico PCA Predicho](./graficos/graficoPCAPredicho.png)
 
 
-## Gráfico de etiquetas de cardiólogos
+## Gráfico de comparación de Falsos Positivos
 
 ![Gráfico 9: Gráfico PCA Predicho](./graficos/graficoPCAPredichoComparacion.png)
 
 Se puede observar que los ECG de los bordes fueron detectados como de riesgo, ya que se acercan a ECGs que están clasificados como de riesgo. Sin embargo, según el cardiólogo, este corresponde a un ECG normal, lo que nos indica un falso positivo.
 
 Al evaluar estos falsos positivos con las etiquetas de SL12, los clasificamos como, un FP con riesgo en etiqueta SL12 y un FP normal en SL12. 
+
+Se tiene que los FP que tienen riesgo en la etiqueta SL12, se ubican en los bordes del gráfico. Ya que se encuentran distanciados de la zona de los ECG normales. El caso que se consideró de riesgo y este si era normal en la etiqueta del SL12 se encuentra cercano a los ECGs normales.
 
 ## Conclusiones
 
