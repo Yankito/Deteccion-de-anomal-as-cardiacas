@@ -67,57 +67,72 @@ Aunque no se puede diagnosticar si un ECG es de riesgo mediante este gráfico, s
 
 ![Gráfico 5: Gráfico PCA](./graficos/graficoPCA.png)
 
+### Uso de los datos
+Para este problema se utilizarán los datos de la BD de Lobachevsky University para entrenar el modelo, utilizando las etiquetas generadas para los diagnósticos, y se utilizará la BD de Atletas Noruegos para probar el modelo entrenado. 
 
+
+### Comparación de métricas de diferentes modelos de clasificación
+Con el fin de usar un modelo de clasificación que se adapte a las necesidades del problema, se entrenaron diferentes modelos y se calcularon las métricas obtenidas al realizar predicciones. Los modelos entrenados fueron los siguientes, K-nearest neighbors con Dynamic Time Warping (DTW), Decision Tree, Naive Bayes, Support vector machine (SVM) y XGBoost.
+
+Las métricas de exactitud, precisión, recall y f1 son las siguientes:
+
+![Gráfico 6: Gráfico de comparación entre modelos](./graficos/comparacionModelosClasificacion.png)
+
+Para este caso es importante tener el mayor porcentaje de recall debido a que se deben detectar todos los casos de riesgo, se puede analizar que el modelo Decision Tree tiene 100% de recall, pero esto es debido a que predice muchos caso como de riesgo, por lo que obtiene este 100% de recall, pero esto provoca que tenga un bajo porcentaje de exactitud y presición. Debido a estas métricas el mejor modelo para este caso es KNN con DTW.
 
 ### Selección y Justificación de Modelos
 Para predecir el diagnóstico general de un ECG, identificando si es **normal, o de riesgo** se utilizó el modelo de **K-nearest neighbors (KNN)** utilizando **Dynamic Time Warping (DTW)** como métrica de distancia, para así, comparar los ECGs y así encontrar el más cercano. 
 Se utilizó esta técnica debido a la baja cantidad de datos, lo que dificultaba aplicar técnicas que requieren un mayor volumen de datos como Random Forest o algún algoritmo de aprendizaje supervisado.
-Una de las principales ventajas de utilizar DTW en el análisis de ECGs, es su capacidad para alinear y comparar señales de diferentes longitudes o con variaciones en el tiempo. Para el caso de los ECGs, esto es útil debido a las siguientes razones.
-Manejo de Variabilidad Temporal: Los ECGs suelen tener variaciones en la frecuencia y duración de los latidos cardíacos. DTW permite alinear estas señales, ignorando las pequeñas diferencias temporales, permitiendo detectar patrones de una mejor manera.
-Eficiencia con Pocos Datos: Al no requerir grandes volúmenes de datos para entrenamiento, DTW se adapta de manera ideal para conjuntos de datos pequeños y permitiendo encontrar patrones relevantes.
+Una de las principales ventajas de utilizar DTW en el análisis de ECGs, es su capacidad para alinear y comparar señales de diferentes longitudes o con variaciones en el tiempo. Para el caso de los ECGs, esto es útil debido a las siguientes razones:
 
-Este modelo es relevante debido a que permite comparar las señales de ondas sin que afecte los pequeños desfases de tiempos, además al comparar señales permite comparar entre las formas de las ondas, detectando con precisión las similitudes entre las señales.
+**Manejo de Variabilidad Temporal**: Los ECGs suelen tener variaciones en la frecuencia y duración de los latidos cardíacos. DTW permite alinear estas señales, ignorando las pequeñas diferencias temporales, permitiendo detectar patrones de una mejor manera.
+
+**Eficiencia con Pocos Datos**: Al no requerir grandes volúmenes de datos para entrenamiento, DTW se adapta de manera ideal para conjuntos de datos pequeños y permitiendo encontrar patrones relevantes.
+
+Este modelo es relevante debido a que permite comparar las señales de ondas sin que afecte los pequeños desfases de tiempos, además al comparar señales permite comparar entre las formas de las ondas, detectando con precisión las similitudes entre las señales. 
+
+Además al implementar diferentes modelos, se obtuvo que el modelo KNN con DTW presenta mejores métricas al realizar predicciones.
 
 ### Implementación y Evaluación de Modelos
-El modelo de K-nearest neighbors (KNN) con Dynamic Time Warping (DTW) como métrica de distancia se entrena con la BD de Lobachevsky University. Para entrenar el modelo se utiliza la BD de Lobachevsky University, y para probar la precisión del modelo se utiliza la BD de Atletas Noruegos.
+El modelo de K-nearest neighbors (KNN) con Dynamic Time Warping (DTW) como métrica de distancia, es entrenado con la BD de Lobachevsky University, y para probar la precisión del modelo se utiliza la BD de Atletas Noruegos.
 La implementación de KNN con DTW consiste en que, para cada ECG de la BD de Atletas Noruegos, se calcula las distancias DTW con respecto a cada ECG del conjunto de entrenamiento. Y con las distancias calculadas con respecto a todos los ECGs de entrenamiento, se buscan los 3 vecinos más cercanos, y si alguno de estos vecinos corresponde a un ECG de riesgo, el ECG evaluado se clasifica como de riesgo.
 
 Al evaluar el modelo este entrega una exactitud del 85,71%, esto debido a que el modelo detecta los casos que son de riesgo, pero indica algunos falsos positivos, clasificando casos que son normales como de riesgos. Sin embargo, es importante que los casos de riesgo no sean detectados como normales.
 
 #### Matriz de Confusión de Diagnósticos de ECGs de Atletas
 
-![Gráfico 6: Matriz de Confusión Atletas](./graficos/matrizConfusionAtletas.png)
+![Gráfico 7: Matriz de Confusión Atletas](./graficos/matrizConfusionAtletas.png)
 
 
-Debido a que en este caso se generan ciertos falsos positivos, se presenta la opción de no clasificar este diagnóstico como un completo error, sino, que este caso posiblemente si necesite la evaluación de un cardiólogo de igual manera. Debido a que se posee las etiquetas del algoritmo SL12, se tiene la posibilidad de usar este diagnóstico para comprobar la predicción, cuando el modelo predice un ECG como de riesgo y el cardiólogo no lo contempló de esta manera, se evalúa el diagnóstico del algoritmo SL12. 
+Debido a que en este caso se generan ciertos falsos positivos, se presenta la opción de no clasificar este diagnóstico como un completo error, sino, que este caso posiblemente si necesite la evaluación de un cardiólogo. Debido a que se posee las etiquetas del algoritmo SL12, se tiene la posibilidad de usar este diagnóstico para comprobar la predicción, es por esto que cuando el modelo predice un ECG como de riesgo y el cardiólogo no lo contempló de esta manera, se evalúa el diagnóstico del algoritmo SL12. 
 
 Al contemplar este diagnóstico adicional, se obtiene una exactitud del 96,4%, Debido a que el algoritmo SL12 había clasificados los ECG que dieron falsos positivos como de riesgo. Sin embargo, el cardiólogo al realizar un análisis del paciente descartó los riesgos. Por lo que el modelo no se aleja del diagnóstico final, ya que el objetivo del modelo es indicar si existe una alerta, para que así un cardiólogo pueda diagnosticar si es que existe un posible riesgo para el deportista.
 
 #### Matriz de Confusión de Diagnósticos de ECGs de Atletas usando etiqueta de SL12
 
-![Gráfico 7: Matriz de Confusión Atletas con SL12](./graficos/matrizConfusionAtletasSL12.png)
+![Gráfico 8: Matriz de Confusión Atletas con SL12](./graficos/matrizConfusionAtletasSL12.png)
 
 El recall es de 100% ya que se detectaron todos los casos de riesgo correctamente, lo que es primordial para el modelo. Adicionalmente, se tiene un 33,33% de precisión, ya que se generaron algunos falsos positivos, sin embargo, este porcentaje aumenta a 83.33% si se consideran los diagnósticos del SL12. 
 EL F1 tiene un 50% considerando las etiquetas de los cardiólogos y un 90,91% considerando adicionalmente la etiqueta del SL12.
 
 #### Métricas de la evaluación
 
-![Gráfico 8: Métricas de la evaluación](./graficos/metricas.png)
+![Gráfico 9: Métricas de la evaluación con DTW](./graficos/metricasDTW.png)
 
 ### Comparación de gráfico PCA con predicciones realizadas
 
 ## Gráfico de etiquetas de cardiólogos
 
-![Gráfico 9: Gráfico PCA](./graficos/graficoPCA.png)
+![Gráfico 10: Gráfico PCA](./graficos/graficoPCA.png)
 
 ## Gráfico de etiquetas de predichas por el modelo
 
-![Gráfico 10: Gráfico PCA Predicho](./graficos/graficoPCAPredicho.png)
+![Gráfico 11: Gráfico PCA Predicho](./graficos/graficoPCAPredicho.png)
 
 
 ## Gráfico de comparación de Falsos Positivos
 
-![Gráfico 11: Gráfico PCA Predicho](./graficos/graficoPCAPredichoComparacion.png)
+![Gráfico 12: Gráfico PCA Predicho](./graficos/graficoPCAPredichoComparacion.png)
 
 De los gráficos se puede analizar que los ECG detectados como de riesgo se encuentran hacia los bordes del gráfico, separados de los casos normales, estos casos se acercan más a ECGs que están clasificados como de riesgo. Sin embargo, según el cardiólogo, este corresponde a un ECG normal, lo que nos indica un posible falso positivo.
 
@@ -128,7 +143,7 @@ El caso que se consideró de riesgo y si era normal en la etiqueta del SL12 se e
 
 ## Conclusiones
 
-Al realizar el entrenamiento del modelo KNN con DTW con la BD Lobachevsky University y las pruebas con la BD de Atletas Noruegos se obtuvieron resultados adecuados, el aspecto a destacar es que se detectaron satisfactoriamente todos los casos de riesgos. Esto es un aspecto importante, ya que es crucial no descartar ninguno de estos casos. Sin embargo, se generaron algunos falsos positivos, pero esto no es un total error, ya que como se demostró anteriormente, al contemplar el diagnóstico del algoritmo SL12, es posible que estos casos también necesitaban la evaluación de un cardiólogo para descartar los riesgos. Se logró comprobar e identificar que existe un sesgo cuando se tiene casos de riesgo, ya que estos se alejan de la zona donde se agrupan los casos normales.
+Al realizar el entrenamiento del modelo KNN con DTW con la BD Lobachevsky University y las pruebas con la BD de Atletas Noruegos se obtuvieron resultados aceptables, el aspecto a destacar es que se detectaron satisfactoriamente todos los casos de riesgos. Esto es un aspecto importante, ya que es crucial no descartar ninguno de estos casos. Sin embargo, se generaron algunos falsos positivos, pero esto no es un total error, ya que como se demostró anteriormente, al contemplar el diagnóstico del algoritmo SL12, es posible que estos casos también necesitaban la evaluación de un cardiólogo para descartar los riesgos. Analizando el gráfico PCA, se logró comprobar e identificar que existe un sesgo cuando se tiene casos de riesgo, ya que estos se alejan de la zona donde se agrupan los casos normales. Además, los casos que fueron identificados como falsos postivos que resultaron de riesgo en la etiqueta del algoritmo SL12, se encuentran separados de la zona en donde se agrupan los casos normales, representando una división entre los casos normales y los de riesgo. 
 
 ## Referencias
 
