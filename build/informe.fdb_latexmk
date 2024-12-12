@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1733977020.8292 "c:/Users/yanko/Documents/2024-2/Taller integrador/repositorio/Deteccion-de-anomal-as-cardiacas/informe.tex" "build/informe.pdf" "informe" 1733977022.27999 0
+["pdflatex"] 1733977268.85948 "c:/Users/yanko/Documents/2024-2/Taller integrador/repositorio/Deteccion-de-anomal-as-cardiacas/informe.tex" "build/informe.pdf" "informe" 1733977270.29375 0
   "C:/Users/yanko/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1733975924 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/yanko/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1733950952 24225047 43d5b8df325809d76958d920f51125cd ""
   "C:/Users/yanko/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -48,8 +48,8 @@
   "C:/Users/yanko/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1704400941 30006 57b07afb710ee2f649c65cfbafda39c1 ""
   "C:/Users/yanko/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1ptm.fd" 1585253778 1007 15056f4a61917ceed3a44e4ac11fcc52 ""
   "C:/Users/yanko/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "build/informe.aux" 1733977022 5159 db54d21abff4927d6c74031d2a66f1c6 "pdflatex"
-  "c:/Users/yanko/Documents/2024-2/Taller integrador/repositorio/Deteccion-de-anomal-as-cardiacas/informe.tex" 1733977020 19940 2cf6cf0ef4a1744a239e2e82a553c504 ""
+  "build/informe.aux" 1733977270 5160 46f18fb6f59b7b50d7b936ab9a00c2d1 "pdflatex"
+  "c:/Users/yanko/Documents/2024-2/Taller integrador/repositorio/Deteccion-de-anomal-as-cardiacas/informe.tex" 1733977266 19941 a83b262fc5ef23263e8c28250ff7e020 ""
   "graficos/Tabla1HallazgosHabituales.jpg" 1731023213 138134 c68e0213ec3ed21286e286a95bf2162a ""
   "graficos/Tabla2HallazgosBorderline.jpg" 1731023202 58734 cb9d83adf3d0aadcb407aaba2ef74c6d ""
   "graficos/Tabla3HallazgosAnormales.jpg" 1731023193 140372 e09a6711a2d7eef2b853afb86a627c74 ""
@@ -65,7 +65,7 @@
   "graficos/matrizConfusionAtletas.png" 1731026211 28625 e59fad83cef3bd0e5a446c77c925dfa9 ""
   "graficos/matrizConfusionAtletasSL12.png" 1733169340 36226 d3d986f55026080210b21efd37ec5fe9 ""
   "graficos/metricasDTW.png" 1732233669 44129 455821905823ba63091cb6edc4e98bd2 ""
-  "informe.tex" 1733977020 19940 2cf6cf0ef4a1744a239e2e82a553c504 ""
+  "informe.tex" 1733977266 19941 a83b262fc5ef23263e8c28250ff7e020 ""
   (generated)
   "build/informe.aux"
   "build/informe.log"
