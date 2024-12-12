@@ -1,7 +1,7 @@
 PWD c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas
 INPUT C:\Users\yanko\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\informe.tex
-OUTPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.log
+INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\reporte.tex
+OUTPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.log
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\latex\ieeetran\IEEEtran.cls
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\latex\ieeetran\IEEEtran.cls
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\latex\psnfss\ot1ptm.fd
@@ -95,10 +95,10 @@ INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
-INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.aux
-INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.aux
-INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.aux
-OUTPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.aux
+INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.aux
+INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.aux
+INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.aux
+OUTPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.aux
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
@@ -112,7 +112,7 @@ INPUT .\graficos\hallazgosNEADB.png
 INPUT .\graficos\hallazgosNEADB.png
 INPUT .\graficos\hallazgosNEADB.png
 INPUT .\graficos\hallazgosNEADB.png
-OUTPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.pdf
+OUTPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.pdf
 INPUT .\graficos\hallazgosNEADB.png
 INPUT .\graficos\hallazgosNEADB.png
 INPUT .\graficos\hallazgosNEADB.png
@@ -240,7 +240,7 @@ INPUT .\graficos\graficoPCAPredichoComparacion.png
 INPUT .\graficos\graficoPCAPredichoComparacion.png
 INPUT .\graficos\graficoPCAPredichoComparacion.png
 INPUT .\graficos\graficoPCAPredichoComparacion.png
-INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.aux
+INPUT c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.aux
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmb8a.pfb
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmb8a.pfb
 INPUT C:\Users\yanko\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmbi8a.pfb

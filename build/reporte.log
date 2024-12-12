@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.11)  12 DEC 2024 01:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.11)  12 DEC 2024 01:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/yanko/Documents/2024-2/Taller integrador/repositorio/Deteccion-de-anomal-as-cardiacas/informe.tex"
-(c:/Users/yanko/Documents/2024-2/Taller integrador/repositorio/Deteccion-de-anomal-as-cardiacas/informe.tex
+**"c:/Users/yanko/Documents/2024-2/Taller integrador/repositorio/Deteccion-de-anomal-as-cardiacas/reporte.tex"
+(c:/Users/yanko/Documents/2024-2/Taller integrador/repositorio/Deteccion-de-anomal-as-cardiacas/reporte.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
 (C:\Users\yanko\AppData\Local\Programs\MiKTeX\tex/latex/ieeetran\IEEEtran.cls
@@ -240,12 +240,12 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count285
 \l__pdf_internal_box=\box57
-) (c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.aux
+) (c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.aux
 
 LaTeX Warning: Label `fig' multiply defined.
 
 )
-\openout1 = `informe.aux'.
+\openout1 = `reporte.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
@@ -489,7 +489,7 @@ Before submitting the final camera ready copy, remember to:
 
 [7
 
-] (c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.aux)
+] (c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -508,7 +508,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,8n,65p,374b,275s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/yanko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/yanko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/yanko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/yanko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\informe.pdf" (7 pages, 776170 bytes).
+Output written on "c:\Users\yanko\Documents\2024-2\Taller integrador\repositorio\Deteccion-de-anomal-as-cardiacas\build\reporte.pdf" (7 pages, 776178 bytes).
 PDF statistics:
  75 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
